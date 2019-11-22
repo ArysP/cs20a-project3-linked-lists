@@ -1,0 +1,5 @@
+﻿  main.cpp
+  C:\Users\Arys\source\repos\test\list.h(356) : warning C4715: 'List<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::pop_front': not all control paths return a value
+  C:\Users\Arys\source\repos\test\list.h(382) : warning C4715: 'List<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::pop_rear': not all control paths return a value
+  C:\Users\Arys\source\repos\test\list.h(333) : warning C4715: 'List<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::find': not all control paths return a value
+  test.vcxproj -> C:\Users\Arys\source\repos\test\Debug\test.exe
