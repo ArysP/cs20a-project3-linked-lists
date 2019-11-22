@@ -100,9 +100,22 @@ List<Type>::List() :m_head(nullptr), m_tail(nullptr), m_size(0) {
 //		in any memory leaks or aliasing.  
 template<typename Type>
 List<Type>::List(const List<Type>& other) {
-	/* TODO */
-
+	if (other.m_head == nullptr) {
+		head = tail = nullptr;
+	}	
+	else {
+		head = new Node*(other.m_head);      // allocate head and copy data
+		MyNode<T> tempOther* = otherList.head->next;
+		MyNode<T> temp* = head;
+		while (tempOther != nullptr) {
+			temp->next = new MyNode<T>(tempOther, nullptr, temp); // allocate next elemnt and copy data ( predecessor is "temp" )
+			temp = temp->next;                                      // temp refers to last element of list
+			tempOther = tempOther->next;                            // step one forward
+		}
+		tail = temp;
+	}
 }
+
 // Overloaded assignment operator 
 //		Causes the already existing linked list to be identical to the 
 //		other linked list without causing any memory leaks or aliasing.
@@ -117,7 +130,13 @@ List<Type>& List<Type>::operator=(const List<Type>& other) {
 //		Traverses the nodes and deletes them without causing memory leaks
 template<typename Type>
 List<Type>::~List() {
-	/* TODO */
+	Node* p = m_head;
+	while (p != nullptr) {
+		Node* n = p->next;
+		delete p;
+		p = n;
+	}
+	cout << "destructed";
 }
 
 // List print
@@ -389,23 +408,45 @@ bool List<Type>::pop_rear() {
 //
 template<typename Type>
 bool List<Type>::pop_at(int index) {
-	if (index >= 0 && index <= m_size) {
-		int i = 0;
-		Node* p = m_head;
-		while (i < index) {
-			p = p->next;
-			i++;
+	if (index >= 0 && index < m_size) {
+		if (index == 0) {
+			Node* d = m_head;
+			m_head = d->next;
+			m_head->prev = nullptr;
+			delete d;
+			m_size--;
+			return true;
 		}
-		p->prev = p->next;
-		p->next = p->prev;
-		delete p;
-		m_size--;
-		return true;
+		else if (index == m_size - 1) {
+			Node* d = m_tail;
+			m_tail = d->prev;
+			m_tail->next = nullptr;
+			delete d;
+			m_size--;
+			return true;
+		}
+		else {
+			int i = 0;
+			Node* p = m_head;
+			while (i < index - 1) {
+				p = p->next;
+				i++;
+			}
+			if (p != nullptr) {
+				Node* d = p->next;
+				p->next = d->next;
+				p = p->next;
+				p->prev = d->prev;
+				delete d;
+				m_size--;
+				return true;
+			}
+			return false;
+		}
 	}
 	else {
 		return false;
 	}
-
 }
 
 #endif

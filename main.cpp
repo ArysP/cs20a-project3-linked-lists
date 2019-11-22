@@ -27,7 +27,7 @@ int main() {
 	red.add(6, "yellow");
 	red.pop_front();
 	red.pop_rear();
-	red.pop_at(2);
+	red.pop_at(0);
 
 
 	red.print(); // 2 Bob World Hello
@@ -36,7 +36,8 @@ int main() {
 	cout <<  "head item: " << red.front() << endl;
 	cout <<  "tail item: " << red.rear() << endl;
 	cout << "Whatever item: " << red.get_at(2) << endl;
-	cout << "index of whatever: " << red.find("orange") << endl;
+	cout << "index of whatever: " << red.find("Hello") << endl;
+
 
 	//red.pop_rear();
 	//red.print(); // 2 Bob World 
