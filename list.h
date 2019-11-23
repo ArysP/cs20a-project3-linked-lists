@@ -101,18 +101,32 @@ List<Type>::List() :m_head(nullptr), m_tail(nullptr), m_size(0) {
 template<typename Type>
 List<Type>::List(const List<Type>& other) {
 	if (other.m_head == nullptr) {
-		head = tail = nullptr;
-	}	
+		m_head = m_tail = nullptr;
+	}
 	else {
-		head = new Node*(other.m_head);      // allocate head and copy data
-		MyNode<T> tempOther* = otherList.head->next;
-		MyNode<T> temp* = head;
-		while (tempOther != nullptr) {
-			temp->next = new MyNode<T>(tempOther, nullptr, temp); // allocate next elemnt and copy data ( predecessor is "temp" )
-			temp = temp->next;                                      // temp refers to last element of list
-			tempOther = tempOther->next;                            // step one forward
+		Node* p = other.m_head;
+		int m_size = other.m_size();
+		Node* next = nullptr;
+		Node* prev = nullptr;
+		for (int i = 0; i < m_size; i++)
+		{
+			Node* n = new Node;
+			n->item = p->item;
+			if (m_head == nullptr)
+			{
+				m_head = n;
+				m_tail = m_head;
+			}
+			else
+			{
+				m_tail->next = n;
+				m_tail = n;
+			}
+			n->prev = prev;
+			prev = n;
+			p = p->next;
 		}
-		tail = temp;
+		end->next = nullptr;
 	}
 }
 

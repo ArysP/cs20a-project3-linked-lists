@@ -38,6 +38,11 @@ int main() {
 	cout << "Whatever item: " << red.get_at(2) << endl;
 	cout << "index of whatever: " << red.find("Hello") << endl;
 
+	List<std::string> blue = red;
+
+	blue.print();
+
+
 
 	//red.pop_rear();
 	//red.print(); // 2 Bob World 
