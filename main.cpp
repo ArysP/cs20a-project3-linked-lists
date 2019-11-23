@@ -19,33 +19,129 @@ int main() {
 
 	List<std::string> red; //List of integers
 
-	red.push_back("Hello");
-	red.push_front("world");
-	red.push_front("bob");
-	red.push_front("2");
-	red.push_back("blue");
-	red.add(6, "yellow");
+	red.push_back("orange");
+	red.push_back("2");
+	red.add(4, "yellow");
+	red.add(4, "red");
+	red.add(6, "blue");
+
+
+
+
 	red.pop_front();
 	red.pop_rear();
-	red.pop_at(0);
+	red.pop_at(1);
+	red.size();
+	cout << "size: " << red.m_size << endl;
+	cout << "front: " << red.front() << endl;
+	cout << "getat: " << red.get_at(1) << endl;
+	cout << "find: " << red.find("red") << endl;
 
+	red.print();
+	//List<std::string> blue = red;
+	//cout << "blue print";
+	//blue.print();
 
-	red.print(); // 2 Bob World Hello
-
-	cout << endl << "size is: " << red.size() << endl;
-	cout <<  "head item: " << red.front() << endl;
-	cout <<  "tail item: " << red.rear() << endl;
-	cout << "Whatever item: " << red.get_at(2) << endl;
-	cout << "index of whatever: " << red.find("Hello") << endl;
-
-	List<std::string> blue = red;
-
-	blue.print();
-
-
-
+	//red.push_back("Hello");
+	//red.push_front("world");
+	//red.push_front("bob");
+	//red.push_front("2");
+	//red.push_back("blue");
+	//red.add(6, "yellow");
+	//red.pop_front();
 	//red.pop_rear();
-	//red.print(); // 2 Bob World 
+	//red.pop_at(0);
+
+
+	//red.print(); // 2 Bob World Hello
+
+	//cout << endl << "size is: " << red.size() << endl;
+	//cout <<  "head item: " << red.front() << endl;
+	//cout <<  "tail item: " << red.rear() << endl;
+	//cout << "Whatever item: " << red.get_at(2) << endl;
+	//cout << "index of whatever: " << red.find("Hello") << endl;
+
+	////List<std::string> blue = red;
+	//blue = red;
+	//red.print();
+	//blue.print();
+
+	//cout << endl << "size is: " << red.size() << endl;
+	//cout << endl << "size is: " << blue.size() << endl;
+
+
+	//red.push_back("Hello");
+	//red.push_front("world");
+	//red.push_front("bob");
+
+	//blue.push_back("Helloblue");
+	//blue.push_front("worldblue");
+	//blue.push_front("bobblue");
+
+	//red.print();
+	//blue.print();
+
+	//cout << endl << "size is: " << red.size() << endl;
+	//cout << endl << "size is: " << blue.size() << endl;
+
+
+	//red = blue;
+	//List<std::string> yellow = blue;
+
+	//red.print();
+	//blue.print();
+	//yellow.print();
+
+	//cout << endl << "size is: " << red.size() << endl;
+	//cout << endl << "size is: " << blue.size() << endl;
+	//cout << endl << "size is: " << yellow.size() << endl;
+
+	//red.push_back("Hello");
+	//red.push_front("world");
+	//red.push_front("bob");
+	//red.push_front("2");
+	//red.push_back("blue");
+
+	//red.print();
+	//blue.print();
+	//yellow.print();
+
+	//cout << endl << "size is: " << red.size() << endl;
+	//cout << endl << "size is: " << blue.size() << endl;
+	//cout << endl << "size is: " << yellow.size() << endl;
+
+	//blue.push_back("3");
+	//blue.push_front("5");
+	//blue.push_front("6");
+
+
+	//yellow = red;
+
+	//red.print();
+	//blue.print();
+	//yellow.print();
+
+	//cout << endl << "size is: " << red.size() << endl;
+	//cout << endl << "size is: " << blue.size() << endl;
+	//cout << endl << "size is: " << yellow.size() << endl;
+
+	//yellow = red = blue;
+
+
+	//red.print();
+	//blue.print();
+	//yellow.print();
+
+	//cout << endl << "size is: " << red.size() << endl;
+	//cout << endl << "size is: " << blue.size() << endl;
+	//cout << endl << "size is: " << yellow.size() << endl;
+
+	//List<std::string> orange;
+	//orange.empty();
+	//orange = red;
+	//orange.print();
+	//cout << endl << "size is: " << orange.size() << endl;
+
 
 	return 0;
 }

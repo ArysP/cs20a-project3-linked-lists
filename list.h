@@ -105,7 +105,7 @@ List<Type>::List(const List<Type>& other) {
 	}
 	else {
 		Node* p = other.m_head;
-		int m_size = other.m_size();
+		m_size = other.m_size;
 		Node* next = nullptr;
 		Node* prev = nullptr;
 		for (int i = 0; i < m_size; i++)
@@ -126,7 +126,7 @@ List<Type>::List(const List<Type>& other) {
 			prev = n;
 			p = p->next;
 		}
-		end->next = nullptr;
+		m_tail->next = nullptr;
 	}
 }
 
@@ -135,8 +135,49 @@ List<Type>::List(const List<Type>& other) {
 //		other linked list without causing any memory leaks or aliasing.
 template<typename Type>
 List<Type>& List<Type>::operator=(const List<Type>& other) {
-	/* TODO */
-	return *this;
+	if (this == &other) {
+		return *this;
+	}
+	else {
+		Node* p = m_head;
+		while (p != nullptr) {
+			Node* n = p->next;
+			delete p;
+			p = n;
+		}
+		m_head = nullptr;
+		m_tail = nullptr;
+		m_size = NULL;
+		if (other.m_head == nullptr) {
+			m_head = m_tail = nullptr;
+		}
+		else {
+			Node* p = other.m_head;
+			m_size = other.m_size;
+			Node* next = nullptr;
+			Node* prev = nullptr;
+			for (int i = 0; i < m_size; i++)
+			{
+				Node* n = new Node;
+				n->item = p->item;
+				if (m_head == nullptr)
+				{
+					m_head = n;
+					m_tail = m_head;
+				}
+				else
+				{
+					m_tail->next = n;
+					m_tail = n;
+				}
+				n->prev = prev;
+				prev = n;
+				p = p->next;
+			}
+			m_tail->next = nullptr;
+		}
+		return *this;
+	}
 }
 
 
@@ -150,7 +191,9 @@ List<Type>::~List() {
 		delete p;
 		p = n;
 	}
-	cout << "destructed";
+	m_head = nullptr;
+	m_tail = nullptr;
+	m_size = NULL;
 }
 
 // List print
@@ -174,11 +217,9 @@ void List<Type>::print() const {
 template<typename Type>
 bool List<Type>::empty() const {
 	if (m_head == nullptr) {
-		cout << "list is empty";
 		return true;
 	}
 	else {
-		cout << "list isnt empty";
 		return false;
 	}
 }
@@ -249,17 +290,17 @@ void List<Type>::push_back(const Type& item) {
 //
 template<typename Type>
 void List<Type>::add(int index, const Type& item) {
-	if (index <= 1) {
+	if (index <= 0) {
 		push_front(item);
 	}
-	else if (index >= m_size+1) {
+	else if (index >= m_size) {
 		push_back(item);
 	}
 	//test this more
 	else {
 		Node* t = m_head;
 		Node* p = new Node;
-		for (int i = 0; i < index - 2; i++) {
+		for (int i = 0; i < index - 1; i++) {
 			t = t->next;
 		}
 		p->item = item;
@@ -309,7 +350,7 @@ Type List<Type>::get_at(int index) const {
 	// Typical solution for deployement code is to throw
 	// exceptions, since we haven't covered that yet
 	// we'll make due with assert, which is used for testing
-	assert(index >= 0 && index <= m_size);
+	assert(index >= 0 && index < m_size);
 	if (index <= 0) {
 		return front();
 	} 
@@ -332,13 +373,7 @@ Type List<Type>::get_at(int index) const {
 //		return the size of the list
 template<typename Type>
 int List<Type>::size() const {
-	Node* p = m_head;
-	int count = 0;
-	while (p != nullptr) {
-		p = p->next;
-		count++;
-	}
-	return count;
+	return m_size;
 }
 
 

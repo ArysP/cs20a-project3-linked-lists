@@ -1,5 +1,5 @@
 ﻿  main.cpp
-C:\Users\Administrator\Documents\repos\ap\cs20a-project3-linked-lists\list.h(108,22): error C2064: term does not evaluate to a function taking 0 arguments
-C:\Users\Administrator\Documents\repos\ap\cs20a-project3-linked-lists\list.h(102): message : while compiling class template member function 'List<std::string>::List(const List<std::string> &)'
-C:\Users\Administrator\Documents\repos\ap\cs20a-project3-linked-lists\main.cpp(41): message : see reference to function template instantiation 'List<std::string>::List(const List<std::string> &)' being compiled
-C:\Users\Administrator\Documents\repos\ap\cs20a-project3-linked-lists\main.cpp(20): message : see reference to class template instantiation 'List<std::string>' being compiled
+  D:\repos\cs20\cs20a-project3-linked-lists\list.h(424) : warning C4715: 'List<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::pop_front': not all control paths return a value
+  D:\repos\cs20\cs20a-project3-linked-lists\list.h(401) : warning C4715: 'List<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::find': not all control paths return a value
+  D:\repos\cs20\cs20a-project3-linked-lists\list.h(450) : warning C4715: 'List<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::pop_rear': not all control paths return a value
+  test.vcxproj -> D:\repos\cs20\cs20a-project3-linked-lists\Debug\test.exe
